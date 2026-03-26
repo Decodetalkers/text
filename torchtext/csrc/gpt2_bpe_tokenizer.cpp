@@ -46,7 +46,7 @@ std::vector<std::string> gpt2_bpe_pre_tokenizer(std::string input) {
   // supported in re2. This implementation modifies the original regex in
   // the following two ways:
   // 1. Removes negative lookahead and adds a post-processing step instead.
-  // 2. Replace all [\s] occurences with [\s\v] because re2 does not include
+  // 2. Replace all [\s] occurrences with [\s\v] because re2 does not include
   //    vertical tab (\v) in whitespace. PCRE and Python re include \v in \s.
   //
   // Pseudocode of post-processing step:

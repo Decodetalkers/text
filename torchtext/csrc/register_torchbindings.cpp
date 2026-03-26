@@ -55,7 +55,7 @@ TORCH_LIBRARY_FRAGMENT(torchtext, m) {
       .def("IdToPiece", &SentencePiece::IdToPiece)
       .def_pickle(
           // The underlying content of SentencePiece contains byte string,
-          // and returing it as std::string cause UTF8 decoding error.
+          // and returning it as std::string cause UTF8 decoding error.
           // Since TorchScript does not support byte string, we use byte Tensor
           // to pass around the data.
           // __getstate__

@@ -1,13 +1,13 @@
-import distutils.sysconfig
+from numpy.ma import copy
 import os
 import platform
 import subprocess
 from pathlib import Path
-
+from setuptools import distutils
 import torch
 from setuptools import Extension
 from setuptools.command.build_ext import build_ext
-
+import shutil
 
 __all__ = [
     "get_ext_modules",
@@ -107,6 +107,7 @@ class CMakeBuild(build_ext):
 
         subprocess.check_call(["cmake", str(_ROOT_DIR)] + cmake_args, cwd=self.build_temp)
         subprocess.check_call(["cmake", "--build", "."] + build_args, cwd=self.build_temp)
+        shutil.copy(Path(self.build_temp).joinpath("compile_commands.json"), _ROOT_DIR.joinpath("build").joinpath("compile_commands.json"))
 
     def get_ext_filename(self, fullname):
         ext_filename = super().get_ext_filename(fullname)

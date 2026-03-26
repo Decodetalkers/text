@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import distutils.command.clean
 import io
 import os
 import shutil
@@ -7,7 +6,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-from setuptools import find_packages, setup
+from setuptools import find_packages, setup, distutils
+from distutils.command import clean
 from tools import setup_helpers
 
 ROOT_DIR = Path(__file__).parent.resolve()
@@ -49,9 +49,9 @@ def _init_submodule():
     print(" --- Initializing submodules")
     try:
         subprocess.check_call(["git", "submodule", "init"])
-        subprocess.check_call(["git", "submodule", "update"])
+        subprocess.check_call(["git", "submodule", "update", "--recursive", "--remote"])
     except Exception:
-        print(" --- Submodule initalization failed")
+        print(" --- Submodule initialization failed")
         print("Please run:\n\tgit submodule update --init --recursive")
         sys.exit(1)
     print(" --- Initialized submodule")
@@ -69,10 +69,10 @@ if pytorch_package_version is not None:
     pytorch_package_dep += ">=" + pytorch_package_version
 
 
-class clean(distutils.command.clean.clean):
+class clean(clean.clean):
     def run(self):
         # Run default behavior first
-        distutils.command.clean.clean.run(self)
+        clean.clean.run(self)
 
         # Remove torchtext extension
         for path in (ROOT_DIR / "torchtext").glob("**/*.so"):
@@ -99,14 +99,6 @@ setup_info = dict(
     url="https://github.com/pytorch/text",
     description="Text utilities, models, transforms, and datasets for PyTorch.",
     long_description=read("README.rst"),
-    license="BSD",
-    install_requires=["tqdm", "requests", pytorch_package_dep, "numpy"],
-    python_requires=">=3.8",
-    classifiers=[
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-    ],
     # Package info
     packages=find_packages(exclude=("test*", "tools*")),
     zip_safe=False,

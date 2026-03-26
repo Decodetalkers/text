@@ -13,7 +13,7 @@ set(
   vectors.cpp
   vocab.cpp
   bert_tokenizer.cpp
-  )
+)
 
 set(
   LIBTORCHTEXT_INCLUDE_DIRS
@@ -24,7 +24,7 @@ set(
   $<TARGET_PROPERTY:utf8proc,INCLUDE_DIRECTORIES>
   ${TORCH_INSTALL_PREFIX}/include
   ${TORCH_INSTALL_PREFIX}/include/torch/csrc/api/include
-  )
+)
 
 set(
   LIBTORCHTEXT_LINK_LIBRARIES
@@ -45,7 +45,7 @@ set(
 function (define_library name source include_dirs link_libraries compile_defs)
   add_library(${name} SHARED ${source})
   target_include_directories(${name} PRIVATE ${include_dirs})
-  target_link_libraries(${name} ${link_libraries})
+  target_link_libraries(${name} PUBLIC ${link_libraries})
   target_compile_definitions(${name} PRIVATE ${compile_defs})
   set_target_properties(${name} PROPERTIES PREFIX "")
   if (MSVC)
@@ -56,6 +56,13 @@ function (define_library name source include_dirs link_libraries compile_defs)
     LIBRARY DESTINATION lib
     RUNTIME DESTINATION lib  # For Windows
     )
+  if(DEBUG_INSTALL)
+    install(
+      TARGETS ${name}
+      LIBRARY DESTINATION ${DEBUG_INSTALL_DIR}/lib
+      RUNTIME DESTINATION ${DEBUG_INSTALL_DIR}/lib
+    )
+  endif()
 endfunction()
 
 define_library(
@@ -93,7 +100,7 @@ if (BUILD_TORCHTEXT_PYTHON_EXTENSION)
       ${link_libraries}
       ${TORCH_PYTHON_LIBRARY}
       ${ADDITIONAL_ITEMS}
-      )
+    )
     set_target_properties(${name} PROPERTIES PREFIX "")
     if (MSVC)
       set_target_properties(${name} PROPERTIES SUFFIX ".pyd")
@@ -107,7 +114,14 @@ if (BUILD_TORCHTEXT_PYTHON_EXTENSION)
       TARGETS ${name}
       LIBRARY DESTINATION .
       RUNTIME DESTINATION .  # For Windows
+    )
+    if(DEBUG_INSTALL)
+      install(
+        TARGETS ${name}
+        LIBRARY DESTINATION ${DEBUG_INSTALL_DIR}
+        RUNTIME DESTINATION ${DEBUG_INSTALL_DIR}
       )
+    endif()
   endfunction()
 
   set(
