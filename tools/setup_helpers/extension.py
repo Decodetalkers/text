@@ -106,8 +106,9 @@ class CMakeBuild(build_ext):
             os.makedirs(self.build_temp)
 
         subprocess.check_call(["cmake", str(_ROOT_DIR)] + cmake_args, cwd=self.build_temp)
-        subprocess.check_call(["cmake", "--build", "."] + build_args, cwd=self.build_temp)
         shutil.copy(Path(self.build_temp).joinpath("compile_commands.json"), _ROOT_DIR.joinpath("build").joinpath("compile_commands.json"))
+        subprocess.check_call(["cmake", "--build", "."] + build_args, cwd=self.build_temp)
+
 
     def get_ext_filename(self, fullname):
         ext_filename = super().get_ext_filename(fullname)

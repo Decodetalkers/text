@@ -14,8 +14,6 @@
 #include <torchtext/csrc/vocab.h> // @manual
 #include <torchtext/csrc/vocab_factory.h> // @manual
 
-#include <iostream>
-
 namespace torchtext {
 
 namespace py = pybind11;
@@ -176,7 +174,7 @@ PYBIND11_MODULE(_torchtext, m) {
       .def_property_readonly("bpe_encoder_", &GPT2BPEEncoder::GetBPEEncoder)
       .def_property_readonly(
           "bpe_merge_ranks_", &GPT2BPEEncoder::GetBPEMergeRanks)
-      .def_readonly("seperator_", &GPT2BPEEncoder::seperator_)
+      .def_readonly("separator_", &GPT2BPEEncoder::separator_)
       .def_property_readonly("byte_encoder_", &GPT2BPEEncoder::GetByteEncoder)
       .def("encode", &GPT2BPEEncoder::Encode)
       .def("tokenize", &GPT2BPEEncoder::Tokenize)
@@ -222,7 +220,7 @@ PYBIND11_MODULE(_torchtext, m) {
            bool>())
       .def_property_readonly("bpe_encoder_", &CLIPEncoder::GetBPEEncoder)
       .def_property_readonly("bpe_merge_ranks_", &CLIPEncoder::GetBPEMergeRanks)
-      .def_readonly("seperator_", &CLIPEncoder::seperator_)
+      .def_readonly("separator_", &CLIPEncoder::separator_)
       .def_property_readonly("byte_encoder_", &CLIPEncoder::GetByteEncoder)
       .def("encode", &CLIPEncoder::Encode)
       .def("tokenize", &CLIPEncoder::Tokenize)

@@ -38,7 +38,7 @@ std::vector<std::string> CLIPEncoder::BPE_(
 
   std::vector<std::string> tok_list(token_list.begin(), token_list.end() - 1);
   tok_list.push_back(token_list[token_list.size() - 1] + kWhitespaceString);
-  auto pairs = get_pairs(tok_list, seperator_);
+  auto pairs = get_pairs(tok_list, separator_);
   if (pairs.empty()) {
     return {concatenated + kWhitespaceString};
   }
@@ -56,7 +56,7 @@ std::vector<std::string> CLIPEncoder::BPE_(
     // ["a", "w", "some", "a", "w", "e"]
     // Result: new_token_list = ["aw", "some", "aw", "e"]
 
-    auto parts = split_tokens(bigram, seperator_);
+    auto parts = split_tokens(bigram, separator_);
     std::vector<std::string> new_token_list;
     std::size_t i = 0;
     while (i < tok_list.size()) {
@@ -85,7 +85,7 @@ std::vector<std::string> CLIPEncoder::BPE_(
     if (tok_list.size() == 1) {
       break;
     } else {
-      pairs = get_pairs(tok_list, seperator_);
+      pairs = get_pairs(tok_list, separator_);
     }
   }
 
@@ -111,7 +111,7 @@ CLIPEncoderStatesPybind _serialize_clip_encoder_pybind(
   return std::make_tuple(
       self->GetBPEEncoder(),
       self->GetBPEMergeRanks(),
-      self->seperator_,
+      self->separator_,
       self->GetByteEncoder(),
       self->caching_enabled_);
 }
@@ -121,7 +121,7 @@ CLIPEncoderStatesTorchbind _serialize_clip_encoder_torchbind(
   return std::make_tuple(
       self->bpe_encoder_,
       self->bpe_merge_ranks_,
-      self->seperator_,
+      self->separator_,
       self->byte_encoder_,
       self->caching_enabled_);
 }

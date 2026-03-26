@@ -9,7 +9,6 @@
 #include <torchtext/csrc/vectors.h> // @manual
 #include <torchtext/csrc/vocab.h> // @manual
 
-#include <iostream>
 namespace torchtext {
 
 TORCH_LIBRARY_FRAGMENT(torchtext, m) {
@@ -27,8 +26,9 @@ TORCH_LIBRARY_FRAGMENT(torchtext, m) {
           });
 
   m.class_<RegexTokenizer>("RegexTokenizer")
-      .def(torch::
-               init<std::vector<std::string>, std::vector<std::string>, bool>())
+      .def(
+          torch::
+              init<std::vector<std::string>, std::vector<std::string>, bool>())
       .def("forward", &RegexTokenizer::forward)
       .def_pickle(
           // __getstate__
@@ -74,11 +74,12 @@ TORCH_LIBRARY_FRAGMENT(torchtext, m) {
           });
 
   m.class_<Vectors>("Vectors")
-      .def(torch::init<
-           std::vector<std::string>,
-           std::vector<std::int64_t>,
-           torch::Tensor,
-           torch::Tensor>())
+      .def(
+          torch::init<
+              std::vector<std::string>,
+              std::vector<std::int64_t>,
+              torch::Tensor,
+              torch::Tensor>())
       .def("__getitem__", &Vectors::__getitem__)
       .def("lookup_vectors", &Vectors::lookup_vectors)
       .def("__setitem__", &Vectors::__setitem__)

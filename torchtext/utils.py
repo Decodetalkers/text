@@ -216,7 +216,7 @@ def extract_archive(from_path, to_path=None, overwrite=False):
         return files
 
     else:
-        raise NotImplementedError("We currently only support tar.gz, .tgz, .gz and zip achives.")
+        raise NotImplementedError("We currently only support tar.gz, .tgz, .gz and zip achieves.")
 
 
 def _log_class_usage(klass):

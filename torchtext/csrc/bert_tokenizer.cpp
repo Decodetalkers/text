@@ -69,10 +69,10 @@ static bool _is_control(uint32_t c) {
 
   // unicodedata return 'Cn' whereas utf8proc return 'Lo' for following unicode
   // point Explicitly checking for this unicode point to avoid above
-  // discrepency.
+  // discrepancy.
   if (c == 3332)
     return true;
-  // Fixed: HF referece: All categories starting with 'C'
+  // Fixed: HF reference: All categories starting with 'C'
   return (
       cat == UTF8PROC_CATEGORY_CC || cat == UTF8PROC_CATEGORY_CF ||
       cat == UTF8PROC_CATEGORY_CN || cat == UTF8PROC_CATEGORY_CS ||
@@ -303,7 +303,7 @@ std::vector<std::string> BERTEncoder::Tokenize(std::string text) {
     // convert to unicode codepoints
     UString unicodes = _convert_to_unicode(token);
 
-    // clean -> invalid character removal, whitespce cleanup, strip accents
+    // clean -> invalid character removal, whitespace cleanup, strip accents
     unicodes = _clean(unicodes, strip_accents, is_never_split_token);
 
     // Add whitespace in front/back of tokens to enable splitting based on
