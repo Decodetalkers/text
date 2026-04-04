@@ -1,4 +1,4 @@
 include version.txt
-recursive-include torchtext2 *
+recursive-include torchtext2 *.py *.cmake CMakeList.txt *.cpp *.h
 recursive-include third_party *
 recursive-include tools *

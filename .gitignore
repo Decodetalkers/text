@@ -84,8 +84,8 @@ docs/source/gen_modules
 target/
 
 # computed checksum files
-torchtext/experimental/asset/.checksums/
-
+torchtext2/experimental/asset/.checksums/
+torchtext2-*
 # Jupyter Notebook
 .ipynb_checkpoints
 
