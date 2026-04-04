@@ -45,7 +45,7 @@ set(
 function (define_library name source include_dirs link_libraries compile_defs)
   add_library(${name} SHARED ${source})
   target_include_directories(${name} PRIVATE ${include_dirs})
-  target_link_libraries(${name} PUBLIC ${link_libraries})
+  target_link_libraries(${name} ${link_libraries})
   target_compile_definitions(${name} PRIVATE ${compile_defs})
   set_target_properties(${name} PROPERTIES PREFIX "")
   if (MSVC)
