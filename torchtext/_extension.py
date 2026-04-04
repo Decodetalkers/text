@@ -58,7 +58,7 @@ def _init_extension():
     _load_lib("libtorchtext")
     # This import is for initializing the methods registered via PyBind11
     # This has to happen after the base library is loaded
-    from torchtext import _torchtext  # noqa
+    from torchtext import _torchtext  # noqa  # ty:ignore[unresolved-import]
 
 
 _init_extension()

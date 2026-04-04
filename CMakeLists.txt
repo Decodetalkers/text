@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
+cmake_minimum_required(VERSION 4.0.0)
 
 # Most of the configurations are taken from PyTorch
 # https://github.com/pytorch/pytorch/blob/0c9fb4aff0d60eaadb04e4d5d099fb1e1d5701a9/CMakeLists.txt
@@ -48,7 +48,8 @@ endif()
 
 # Options
 option(BUILD_TORCHTEXT_PYTHON_EXTENSION "Build Python extension" OFF)
-
+option(DEBUG_INSTALL "Install extension to path" ON)
+set(DEBUG_INSTALL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/torchtext" CACHE STRING "Install path")
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(TORCH_INSTALL_PREFIX "${CMAKE_PREFIX_PATH}/../.." CACHE STRING "Install path for torch")
 set(TORCH_COMPILED_WITH_CXX_ABI "-D_GLIBCXX_USE_CXX11_ABI=0" CACHE STRING "Compile torchtext with cxx11_abi")

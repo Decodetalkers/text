@@ -46,7 +46,7 @@ std::vector<std::string> gpt2_bpe_pre_tokenizer(std::string input) {
   // supported in re2. This implementation modifies the original regex in
   // the following two ways:
   // 1. Removes negative lookahead and adds a post-processing step instead.
-  // 2. Replace all [\s] occurences with [\s\v] because re2 does not include
+  // 2. Replace all [\s] occurrences with [\s\v] because re2 does not include
   //    vertical tab (\v) in whitespace. PCRE and Python re include \v in \s.
   //
   // Pseudocode of post-processing step:
@@ -217,7 +217,7 @@ std::string concatenate_strings(const std::vector<std::string>& list) {
 
 std::vector<std::string> get_pairs(
     std::vector<std::string> token_list,
-    const std::string& seperator) {
+    const std::string& separator) {
   // For example: ["he", "l", "l", "o"]
   //    ==> ["he\u0001l", "l\u0001l", "l\u0001o"]
   std::unordered_set<std::string> pairs;
@@ -228,7 +228,7 @@ std::vector<std::string> get_pairs(
 
   std::string prev_token = token_list[0];
   for (std::size_t i = 1; i < token_list.size(); ++i) {
-    pairs.insert(prev_token + seperator + token_list[i]);
+    pairs.insert(prev_token + separator + token_list[i]);
     prev_token = token_list[i];
   }
   pairs_vec.insert(pairs_vec.end(), pairs.begin(), pairs.end());
@@ -238,14 +238,14 @@ std::vector<std::string> get_pairs(
 GPT2BPEEncoder::GPT2BPEEncoder(
     const c10::Dict<std::string, int64_t>& bpe_encoder,
     const c10::Dict<std::string, int64_t>& bpe_merge_ranks,
-    const std::string& seperator,
+    const std::string& separator,
     const c10::Dict<int64_t, std::string>& byte_encoder,
     bool caching_enabled)
     : inf_(bpe_merge_ranks.size() + 1),
       bpe_encoder_(std::move(bpe_encoder)),
       bpe_merge_ranks_(std::move(bpe_merge_ranks)),
       byte_encoder_(std::move(byte_encoder)),
-      seperator_(std::move(seperator)),
+      separator_(std::move(separator)),
       caching_enabled_(caching_enabled) {
   for (auto const& x : bpe_encoder_) {
     bpe_decoder_.insert(x.value(), x.key());
@@ -259,13 +259,13 @@ GPT2BPEEncoder::GPT2BPEEncoder(
 GPT2BPEEncoder::GPT2BPEEncoder(
     const std::unordered_map<std::string, int64_t>& bpe_encoder,
     const std::unordered_map<std::string, int64_t>& bpe_merge_ranks,
-    const std::string& seperator,
+    const std::string& separator,
     const std::unordered_map<int64_t, std::string>& byte_encoder,
     bool caching_enabled)
     : GPT2BPEEncoder(
           _map_to_c10_dict<std::string, int64_t>(bpe_encoder),
           _map_to_c10_dict<std::string, int64_t>(bpe_merge_ranks),
-          seperator,
+          separator,
           _map_to_c10_dict<int64_t, std::string>(byte_encoder),
           caching_enabled) {}
 
@@ -321,7 +321,7 @@ std::vector<std::string> GPT2BPEEncoder::BPE_(
   }
 
   std::vector<std::string> tok_list = token_list;
-  auto pairs = get_pairs(tok_list, seperator_);
+  auto pairs = get_pairs(tok_list, separator_);
   if (pairs.empty()) {
     return {concatenated};
   }
@@ -339,7 +339,7 @@ std::vector<std::string> GPT2BPEEncoder::BPE_(
     // ["a", "w", "some", "a", "w", "e"]
     // Result: new_token_list = ["aw", "some", "aw", "e"]
 
-    auto parts = split_tokens(bigram, seperator_);
+    auto parts = split_tokens(bigram, separator_);
     std::vector<std::string> new_token_list;
     std::size_t i = 0;
     while (i < tok_list.size()) {
@@ -368,7 +368,7 @@ std::vector<std::string> GPT2BPEEncoder::BPE_(
     if (tok_list.size() == 1) {
       break;
     } else {
-      pairs = get_pairs(tok_list, seperator_);
+      pairs = get_pairs(tok_list, separator_);
     }
   }
 
@@ -435,7 +435,7 @@ std::string GPT2BPEEncoder::Decode(const std::vector<int64_t>& tokens) {
     /* Fixing leading/trailing space(s)
 
     We need to ensure spaces before and after special tokens are removed
-    appropirately. Assuming <|endoftext|> and HELLO are special tokens:
+    appropriately. Assuming <|endoftext|> and HELLO are special tokens:
     string input: "<|endoftext|> <|endoftext|> and HELLO world !"
       is to be tokenized as:
     ['<|endoftext|>', '<|endoftext|>', 'and', 'HELLO', 'world', 'Ġ!']
@@ -445,7 +445,7 @@ std::string GPT2BPEEncoder::Decode(const std::vector<int64_t>& tokens) {
 
     Hence while decoding the corresponding string tokens back to
     the original string text, we will have to insert those spaces back again.
-    - Add empty space before a special token if it is not at the begining of the
+    - Add empty space before a special token if it is not at the beginning of the
       sentence and if it is not following another special token.
     - Add empty space after a special token if it is not at the end of the
     sentence.
@@ -539,7 +539,7 @@ GPT2BPEEncoderStatesPybind _serialize_gpt2_bpe_encoder_pybind(
   return std::make_tuple(
       self->GetBPEEncoder(),
       self->GetBPEMergeRanks(),
-      self->seperator_,
+      self->separator_,
       self->GetByteEncoder(),
       self->caching_enabled_);
 }
@@ -549,7 +549,7 @@ GPT2BPEEncoderStatesTorchbind _serialize_gpt2_bpe_encoder_torchbind(
   return std::make_tuple(
       self->bpe_encoder_,
       self->bpe_merge_ranks_,
-      self->seperator_,
+      self->separator_,
       self->byte_encoder_,
       self->caching_enabled_);
 }

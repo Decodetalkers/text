@@ -1,3 +1,4 @@
+from torch.jit.annotations import Dict
 import gzip
 import logging
 import os
@@ -59,12 +60,14 @@ class Vectors:
         self.cache(name, cache, url=url, max_vectors=max_vectors)
 
     def __getitem__(self, token):
+        assert type(self.stoi) is Dict
         if token in self.stoi:
             return self.vectors[self.stoi[token]]
         else:
             return self.unk_init(torch.Tensor(self.dim))
 
     def __contains__(self, token):
+        assert type(self.stoi) is Dict
         return token in self.stoi
 
     def cache(self, name, cache, url=None, max_vectors=None):
@@ -203,6 +206,7 @@ class Vectors:
         if not lower_case_backup:
             indices = [self[token] for token in tokens]
         else:
+            assert type(self.stoi) is Dict
             indices = [self[token] if token in self.stoi else self[token.lower()] for token in tokens]
 
         vecs = torch.stack(indices)
@@ -252,6 +256,7 @@ class CharNGram(Vectors):
             grams = [chars[i : (i + n)] for i in range(end)]
             for gram in grams:
                 gram_key = "{}gram-{}".format(n, "".join(gram))
+                assert type(self.stoi) is Dict
                 if gram_key in self.stoi:
                     vector += self.vectors[self.stoi[gram_key]]
                     num_vectors += 1

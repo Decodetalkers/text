@@ -1,8 +1,27 @@
-[tool.usort]
+[project]
+name = "text"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+	"nltk>=3.9.4",
+	"requests>=2.32.5",
+	"setuptools>=82.0.1",
+	"spacy>=3.8.13",
+	"torch>=2.10.0",
+	"tqdm>=4.67.3",
+]
+license = "MIT"
+authors = [{ name = "Decodetalkers" }]
+classifiers = [
+	'Programming Language :: Python :: 3.8',
+	'Programming Language :: Python :: 3.9',
+	'Programming Language :: Python :: 3.10',
+	'Programming Language :: Python :: 3.12',
+]
 
-first_party_detection = false
-
-[tool.black]
-
-line-length = 120
-target-version = ["py37"]
+[dependency-groups]
+dev = [
+    "ipython>=9.11.0",
+]

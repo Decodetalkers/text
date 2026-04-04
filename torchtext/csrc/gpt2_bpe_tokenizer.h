@@ -38,12 +38,12 @@ std::vector<std::string> gpt2_bpe_pre_tokenizer(std::string input);
 // Concatenate a vector of strings to a single string
 std::string concatenate_strings(const std::vector<std::string>& list);
 
-// Return set of token pairs in a word, seperated by the `seperator`.
+// Return set of token pairs in a word, separated by the `separator`.
 std::vector<std::string> get_pairs(
     std::vector<std::string> token_list,
-    const std::string& seperator);
+    const std::string& separator);
 
-// Split a string into 2 parts seperated by a `seperator`.
+// Split a string into 2 parts separated by a `separator`.
 std::pair<std::string, std::string> split_tokens(
     std::string s,
     std::string delimiter);
@@ -80,19 +80,19 @@ struct GPT2BPEEncoder : torch::CustomClassHolder {
   const c10::Dict<std::string, int64_t> bpe_merge_ranks_;
   const c10::Dict<int64_t, std::string> byte_encoder_;
   const c10::Dict<std::string, int64_t> byte_decoder_;
-  const std::string seperator_;
+  const std::string separator_;
   const bool caching_enabled_;
   explicit GPT2BPEEncoder(
       const c10::Dict<std::string, int64_t>& bpe_encoder,
       const c10::Dict<std::string, int64_t>& bpe_merge_ranks,
-      const std::string& seperator,
+      const std::string& separator,
       const c10::Dict<int64_t, std::string>& byte_encoder,
       bool caching_enabled = false);
 
   TORCHTEXT_API explicit GPT2BPEEncoder(
       const std::unordered_map<std::string, int64_t>& bpe_encoder,
       const std::unordered_map<std::string, int64_t>& bpe_merge_ranks,
-      const std::string& seperator,
+      const std::string& separator,
       const std::unordered_map<int64_t, std::string>& byte_encoder,
       bool caching_enabled = false);
 
