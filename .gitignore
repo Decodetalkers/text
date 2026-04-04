@@ -1,9 +1,8 @@
-*.txt
 *.zip
 *~
 .vector_cache
 .idea/
-
+build/
 # Documentation
 docs/build
 
