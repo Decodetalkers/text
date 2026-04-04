@@ -2,16 +2,16 @@ import torch
 from parameterized import parameterized
 from torch.nn import Linear
 from torch.nn.functional import multi_head_attention_forward as mha_forward
-from torchtext.nn import InProjContainer, MultiheadAttentionContainer, ScaledDotProduct
-from torchtext.nn.modules.multiheadattention import generate_square_subsequent_mask
+from torchtext2.nn import InProjContainer, MultiheadAttentionContainer, ScaledDotProduct
+from torchtext2.nn.modules.multiheadattention import generate_square_subsequent_mask
 
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestModels(TorchtextTestCase):
     def test_multiheadattention(self) -> None:
         embed_dim, nhead, tgt_len, src_len, bsz = 10, 5, 6, 10, 64
-        # Build torchtext MultiheadAttention module
+        # Build torchtext2 MultiheadAttention module
         in_proj = InProjContainer(
             Linear(embed_dim, embed_dim, bias=False),
             Linear(embed_dim, embed_dim, bias=False),
@@ -66,7 +66,7 @@ class TestModels(TorchtextTestCase):
 
     def test_mha_batch_first(self) -> None:
         embed_dim, nhead, tgt_len, src_len, bsz = 10, 5, 6, 10, 64
-        # Build torchtext MultiheadAttention module
+        # Build torchtext2 MultiheadAttention module
         in_proj = InProjContainer(
             Linear(embed_dim, embed_dim, bias=False),
             Linear(embed_dim, embed_dim, bias=False),

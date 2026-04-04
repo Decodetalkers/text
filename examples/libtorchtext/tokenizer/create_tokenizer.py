@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 
 import torch
-from torchtext import transforms
+from torchtext2 import transforms
 
 
 def main(args):

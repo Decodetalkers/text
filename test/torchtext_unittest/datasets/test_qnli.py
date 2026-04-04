@@ -4,10 +4,10 @@ from collections import defaultdict
 from unittest.mock import patch
 
 from parameterized import parameterized
-from torchtext.datasets.qnli import QNLI
+from torchtext2.datasets.qnli import QNLI
 
 from ..common.case_utils import TempDirMixin, zip_equal, get_random_unicode
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 LABELS = ["entailment", "not_entailment"]

@@ -1,10 +1,10 @@
 import argparse
 import time
 
-from torchtext.data.functional import load_sp_model as load_torchbind_sp_model
-from torchtext.datasets import DATASETS
-from torchtext.prototype.transforms import load_sp_model as load_pybind_sp_model
-from torchtext.utils import download_from_url
+from torchtext2.data.functional import load_sp_model as load_torchbind_sp_model
+from torchtext2.datasets import DATASETS
+from torchtext2.prototype.transforms import load_sp_model as load_pybind_sp_model
+from torchtext2.utils import download_from_url
 
 
 def benchmark_sentencepiece(args):

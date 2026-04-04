@@ -5,10 +5,10 @@ from collections import defaultdict
 from unittest.mock import patch
 
 from parameterized import parameterized
-from torchtext.datasets.stsb import STSB
+from torchtext2.datasets.stsb import STSB
 
 from ..common.case_utils import TempDirMixin, zip_equal, get_random_unicode
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 def _get_mock_dataset(root_dir):

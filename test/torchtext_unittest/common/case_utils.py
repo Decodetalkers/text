@@ -5,7 +5,7 @@ import unittest
 from itertools import zip_longest
 
 import torch
-from torchtext._internal.module_utils import is_module_available
+from torchtext2._internal.module_utils import is_module_available
 
 
 class TempDirMixin:

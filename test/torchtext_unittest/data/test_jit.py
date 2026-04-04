@@ -1,14 +1,14 @@
 import torch
 from torch.testing import assert_close
-from torchtext.nn import InProjContainer, MultiheadAttentionContainer, ScaledDotProduct
+from torchtext2.nn import InProjContainer, MultiheadAttentionContainer, ScaledDotProduct
 
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestJIT(TorchtextTestCase):
     def test_torchscript_multiheadattention(self) -> None:
         embed_dim, nhead, tgt_len, src_len, bsz = 10, 5, 6, 10, 64
-        # Build torchtext MultiheadAttention models
+        # Build torchtext2 MultiheadAttention models
         in_proj_container = InProjContainer(
             torch.nn.Linear(embed_dim, embed_dim, bias=False),
             torch.nn.Linear(embed_dim, embed_dim, bias=False),

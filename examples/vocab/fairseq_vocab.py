@@ -2,7 +2,7 @@ from collections import OrderedDict
 from typing import Dict, List, Optional
 
 from fairseq.data.dictionary import Dictionary
-from torchtext.vocab import Vocab
+from torchtext2.vocab import Vocab
 
 
 def build_fairseq_vocab(
@@ -14,7 +14,7 @@ def build_fairseq_vocab(
     min_count: int = -1,
     tokens_to_add: Optional[List[str]] = None,
 ):
-    """Function builds a torchtext Vocab for models pre-trained using Fairseq
+    """Function builds a torchtext2 Vocab for models pre-trained using Fairseq
     modules.
 
     The dictionary class can take any Fairseq Dictionary class and is

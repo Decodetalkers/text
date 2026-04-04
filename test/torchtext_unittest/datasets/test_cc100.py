@@ -4,11 +4,11 @@ from collections import defaultdict
 from unittest.mock import patch
 
 from parameterized import parameterized
-from torchtext.datasets import CC100
-from torchtext.datasets.cc100 import VALID_CODES
+from torchtext2.datasets import CC100
+from torchtext2.datasets.cc100 import VALID_CODES
 
 from ..common.case_utils import TempDirMixin, zip_equal, get_random_unicode
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 def _get_mock_dataset(root_dir):

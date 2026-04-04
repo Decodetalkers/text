@@ -1,6 +1,6 @@
 """Run smoke tests"""
 
-import torchtext
+import torchtext2
 
 
-print("torchtext version is ", torchtext.__version__)
+print("torchtext2 version is ", torchtext2.__version__)

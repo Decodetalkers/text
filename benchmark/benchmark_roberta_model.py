@@ -2,8 +2,8 @@ from argparse import ArgumentParser
 
 import torch
 from benchmark.utils import Timer
-from torchtext.functional import to_tensor
-from torchtext.models import XLMR_BASE_ENCODER, XLMR_LARGE_ENCODER, ROBERTA_BASE_ENCODER, ROBERTA_LARGE_ENCODER
+from torchtext2.functional import to_tensor
+from torchtext2.models import XLMR_BASE_ENCODER, XLMR_LARGE_ENCODER, ROBERTA_BASE_ENCODER, ROBERTA_LARGE_ENCODER
 
 ENCODERS = {
     "xlmr_base": XLMR_BASE_ENCODER,

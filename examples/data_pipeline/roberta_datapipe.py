@@ -2,12 +2,12 @@ from argparse import ArgumentParser
 from functools import partial
 from typing import Dict, Any
 
-import torchtext.functional as F
-import torchtext.transforms as T
+import torchtext2.functional as F
+import torchtext2.transforms as T
 from torch.hub import load_state_dict_from_url
 from torch.nn import Module
 from torch.utils.data import DataLoader
-from torchtext.datasets import SST2
+from torchtext2.datasets import SST2
 
 
 class RobertaTransformDataPipe(Module):

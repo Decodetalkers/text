@@ -1,8 +1,8 @@
 from parameterized import parameterized
 from torch.utils.data.datapipes.iter import IterableWrapper
-from torchtext.data.datasets_utils import _ParseIOBData
+from torchtext2.data.datasets_utils import _ParseIOBData
 
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestDatasetUtils(TorchtextTestCase):

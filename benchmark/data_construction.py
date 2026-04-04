@@ -1,6 +1,6 @@
 import time
 
-from torchtext.prototype import datasets
+from torchtext2.prototype import datasets
 
 
 def benchmark_construction(name, Dataset):

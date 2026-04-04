@@ -1,15 +1,15 @@
 import pytest  # noqa: F401
 import torch
 from parameterized import parameterized, parameterized_class
-from torchtext.models import (
+from torchtext2.models import (
     ROBERTA_BASE_ENCODER,
     ROBERTA_LARGE_ENCODER,
     ROBERTA_DISTILLED_ENCODER,
     XLMR_BASE_ENCODER,
     XLMR_LARGE_ENCODER,
 )
-from torchtext_unittest.common.assets import get_asset_path
-from torchtext_unittest.common.torchtext_test_case import TorchtextTestCase
+from torchtext2_unittest.common.assets import get_asset_path
+from torchtext2_unittest.common.torchtext2_test_case import TorchtextTestCase
 
 BUNDLERS = {
     "xlmr_base": XLMR_BASE_ENCODER,
@@ -32,7 +32,7 @@ BUNDLERS = {
 )
 class TestRobertaEncoders(TorchtextTestCase):
     def _roberta_encoders(self, is_jit, encoder, expected_asset_name, test_text):
-        """Verify pre-trained XLM-R and Roberta models in torchtext produce
+        """Verify pre-trained XLM-R and Roberta models in torchtext2 produce
         the same output as the reference implementation within fairseq
         """
         expected_asset_path = get_asset_path(expected_asset_name)

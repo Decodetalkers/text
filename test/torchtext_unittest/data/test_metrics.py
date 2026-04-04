@@ -1,6 +1,6 @@
-from torchtext.data.metrics import bleu_score
+from torchtext2.data.metrics import bleu_score
 
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestUtils(TorchtextTestCase):

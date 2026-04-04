@@ -6,12 +6,12 @@ import torch
 from model import TextClassificationModel
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import random_split
-from torchtext.data.functional import to_map_style_dataset
-from torchtext.data.utils import get_tokenizer, ngrams_iterator
-from torchtext.datasets import DATASETS
-from torchtext.prototype.transforms import load_sp_model, PRETRAINED_SP_MODEL, SentencePieceTokenizer
-from torchtext.utils import download_from_url
-from torchtext.vocab import build_vocab_from_iterator
+from torchtext2.data.functional import to_map_style_dataset
+from torchtext2.data.utils import get_tokenizer, ngrams_iterator
+from torchtext2.datasets import DATASETS
+from torchtext2.prototype.transforms import load_sp_model, PRETRAINED_SP_MODEL, SentencePieceTokenizer
+from torchtext2.utils import download_from_url
+from torchtext2.vocab import build_vocab_from_iterator
 
 r"""
 This file shows the training process of the text classification model.

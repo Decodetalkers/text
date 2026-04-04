@@ -11,7 +11,7 @@ T5-Base Model for Summarization, Sentiment Classification, and Translation
 # --------
 #
 # This tutorial demonstrates how to use a pre-trained T5 Model for summarization, sentiment classification, and
-# translation tasks. We will demonstrate how to use the torchtext library to:
+# translation tasks. We will demonstrate how to use the torchtext2 library to:
 #
 # 1. Build a text pre-processing pipeline for a T5 model
 # 2. Instantiate a pre-trained T5 model with base configuration
@@ -33,12 +33,12 @@ T5-Base Model for Summarization, Sentiment Classification, and Translation
 # 4. Add end-of-sequence (EOS) and padding token IDs
 #
 # T5 uses a SentencePiece model for text tokenization. Below, we use a pre-trained SentencePiece model to build
-# the text pre-processing pipeline using torchtext's T5Transform. Note that the transform supports both
+# the text pre-processing pipeline using torchtext2's T5Transform. Note that the transform supports both
 # batched and non-batched text input (for example, one can either pass a single sentence or a list of sentences), however
 # the T5 model expects the input to be batched.
 #
 
-from torchtext.models import T5Transform
+from torchtext2.models import T5Transform
 
 padding_idx = 0
 eos_idx = 1
@@ -57,7 +57,7 @@ transform = T5Transform(
 #
 # .. code-block::
 #
-#   from torchtext.models import T5_BASE_GENERATION
+#   from torchtext2.models import T5_BASE_GENERATION
 #   transform = T5_BASE_GENERATION.transform()
 #
 
@@ -66,12 +66,12 @@ transform = T5Transform(
 # Model Preparation
 # -----------------
 #
-# torchtext provides SOTA pre-trained models that can be used directly for NLP tasks or fine-tuned on downstream tasks. Below
+# torchtext2 provides SOTA pre-trained models that can be used directly for NLP tasks or fine-tuned on downstream tasks. Below
 # we use the pre-trained T5 model with standard base configuration to perform text summarization, sentiment classification, and
-# translation. For additional details on available pre-trained models, see `the torchtext documentation <https://pytorch.org/text/main/models.html>`__
+# translation. For additional details on available pre-trained models, see `the torchtext2 documentation <https://pytorch.org/text/main/models.html>`__
 #
 #
-from torchtext.models import T5_BASE_GENERATION
+from torchtext2.models import T5_BASE_GENERATION
 
 
 t5_base = T5_BASE_GENERATION
@@ -84,13 +84,13 @@ model.eval()
 # GenerationUtils
 # ------------------
 #
-# We can use torchtext's ``GenerationUtils`` to produce an output sequence based on the input sequence provided. This calls on the
+# We can use torchtext2's ``GenerationUtils`` to produce an output sequence based on the input sequence provided. This calls on the
 # model's encoder and decoder, and iteratively expands the decoded sequences until the end-of-sequence token is generated
 # for all sequences in the batch. The ``generate`` method shown below uses greedy search to generate the sequences. Beam search and
 # other decoding strategies are also supported.
 #
 #
-from torchtext.prototype.generate import GenerationUtils
+from torchtext2.prototype.generate import GenerationUtils
 
 sequence_generator = GenerationUtils(model)
 
@@ -98,7 +98,7 @@ sequence_generator = GenerationUtils(model)
 #######################################################################
 # Datasets
 # --------
-# torchtext provides several standard NLP datasets. For a complete list, refer to the documentation
+# torchtext2 provides several standard NLP datasets. For a complete list, refer to the documentation
 # at https://pytorch.org/text/stable/datasets.html. These datasets are built using composable torchdata
 # datapipes and hence support standard flow-control and mapping/transformation using user defined
 # functions and transforms.
@@ -119,7 +119,7 @@ sequence_generator = GenerationUtils(model)
 from functools import partial
 
 from torch.utils.data import DataLoader
-from torchtext.datasets import CNNDM
+from torchtext2.datasets import CNNDM
 
 cnndm_batch_size = 5
 cnndm_datapipe = CNNDM(split="test")
@@ -159,11 +159,11 @@ cnndm_dataloader = DataLoader(cnndm_datapipe, shuffle=True, batch_size=None)
 # We can also load the IMDB dataset, which will be used to demonstrate sentiment classification using the T5 model.
 # This dataset has a train and test split. Below we demo on the test split.
 #
-# The T5 model was trained on the SST2 dataset (also available in torchtext) for sentiment classification using the
+# The T5 model was trained on the SST2 dataset (also available in torchtext2) for sentiment classification using the
 # prefix "sst2 sentence". Therefore, we will use this prefix to perform sentiment classification on the IMDB dataset.
 #
 
-from torchtext.datasets import IMDB
+from torchtext2.datasets import IMDB
 
 imdb_batch_size = 3
 imdb_datapipe = IMDB(split="test")
@@ -187,7 +187,7 @@ imdb_dataloader = DataLoader(imdb_datapipe, batch_size=None)
 #
 # The T5 model uses the prefix "translate English to German" for this task.
 
-from torchtext.datasets import Multi30k
+from torchtext2.datasets import Multi30k
 
 multi_batch_size = 5
 language_pair = ("en", "de")

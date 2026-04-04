@@ -11,7 +11,7 @@ SST-2 Binary text classification with XLM-RoBERTa model
 # --------
 #
 # This tutorial demonstrates how to train a text classifier on SST-2 binary dataset using a pre-trained XLM-RoBERTa (XLM-R) model.
-# We will show how to use torchtext library to:
+# We will show how to use torchtext2 library to:
 #
 # 1. build text pre-processing pipeline for XLM-R model
 # 2. read SST-2 dataset and transform it using text and label transformation
@@ -41,13 +41,13 @@ DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cp
 # 3. Add any special tokens IDs
 #
 # XLM-R uses sentencepiece model for text tokenization. Below, we use pre-trained sentencepiece
-# model along with corresponding vocabulary to build text pre-processing pipeline using torchtext's transforms.
-# The transforms are pipelined using :py:func:`torchtext.transforms.Sequential` which is similar to :py:func:`torch.nn.Sequential`
+# model along with corresponding vocabulary to build text pre-processing pipeline using torchtext2's transforms.
+# The transforms are pipelined using :py:func:`torchtext2.transforms.Sequential` which is similar to :py:func:`torch.nn.Sequential`
 # but is torchscriptable. Note that the transforms support both batched and non-batched text inputs i.e, one
 # can either pass a single sentence or list of sentences.
 #
 
-import torchtext.transforms as T
+import torchtext2.transforms as T
 from torch.hub import load_state_dict_from_url
 
 padding_idx = 1
@@ -79,7 +79,7 @@ from torch.utils.data import DataLoader
 #######################################################################
 # Dataset
 # -------
-# torchtext provides several standard NLP datasets. For complete list, refer to documentation
+# torchtext2 provides several standard NLP datasets. For complete list, refer to documentation
 # at https://pytorch.org/text/stable/datasets.html. These datasets are build using composable torchdata
 # datapipes and hence support standard flow-control and mapping/transformation using user defined functions
 # and transforms. Below, we demonstrate how to use text and label processing transforms to pre-process the
@@ -91,7 +91,7 @@ from torch.utils.data import DataLoader
 #       distributed learning, please see :ref:`this note <datapipes_warnings>`
 #       for further instructions.
 
-from torchtext.datasets import SST2
+from torchtext2.datasets import SST2
 
 batch_size = 16
 
@@ -134,7 +134,7 @@ dev_dataloader = DataLoader(dev_datapipe, batch_size=None)
 # Model Preparation
 # -----------------
 #
-# torchtext provides SOTA pre-trained models that can be used to fine-tune on downstream NLP tasks.
+# torchtext2 provides SOTA pre-trained models that can be used to fine-tune on downstream NLP tasks.
 # Below we use pre-trained XLM-R encoder with standard base architecture and attach a classifier head to fine-tune it
 # on SST-2 binary classification task. We shall use standard Classifier head from the library, but users can define
 # their own appropriate task head and attach it to the pre-trained encoder. For additional details on available pre-trained models,
@@ -145,7 +145,7 @@ dev_dataloader = DataLoader(dev_datapipe, batch_size=None)
 num_classes = 2
 input_dim = 768
 
-from torchtext.models import RobertaClassificationHead, XLMR_BASE_ENCODER
+from torchtext2.models import RobertaClassificationHead, XLMR_BASE_ENCODER
 
 classifier_head = RobertaClassificationHead(num_classes=num_classes, input_dim=input_dim)
 model = XLMR_BASE_ENCODER.get_model(head=classifier_head)
@@ -160,7 +160,7 @@ model.to(DEVICE)
 # for training and evaluation
 #
 
-import torchtext.functional as F
+import torchtext2.functional as F
 from torch.optim import AdamW
 
 learning_rate = 1e-5

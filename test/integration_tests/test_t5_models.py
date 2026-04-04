@@ -4,9 +4,9 @@ import tempfile
 import pytest  # noqa: F401
 import torch
 from parameterized import parameterized_class
-from torchtext import _TEXT_BUCKET
-from torchtext._download_hooks import _TEST_DOWNLOAD_MANAGER
-from torchtext.models import (
+from torchtext2 import _TEXT_BUCKET
+from torchtext2._download_hooks import _TEST_DOWNLOAD_MANAGER
+from torchtext2.models import (
     FLAN_T5_BASE,
     FLAN_T5_BASE_ENCODER,
     FLAN_T5_BASE_GENERATION,
@@ -21,9 +21,9 @@ from torchtext.models import (
     T5_SMALL_GENERATION,
     T5Bundle,
 )
-from torchtext_unittest.common.assets import get_asset_path
-from torchtext_unittest.common.parameterized_utils import nested_params
-from torchtext_unittest.common.torchtext_test_case import TorchtextTestCase
+from torchtext2_unittest.common.assets import get_asset_path
+from torchtext2_unittest.common.parameterized_utils import nested_params
+from torchtext2_unittest.common.torchtext2_test_case import TorchtextTestCase
 
 BUNDLERS = {
     "base_model": T5_BASE,
@@ -60,7 +60,7 @@ BUNDLERS = {
 )
 class TestT5Model(TorchtextTestCase):
     def _t5_model(self, is_jit, t5_model, expected_asset_name, test_text):
-        """Verify that pre-trained T5 models in torchtext produce
+        """Verify that pre-trained T5 models in torchtext2 produce
         the same output as the HuggingFace reference implementation.
         """
         expected_asset_path = get_asset_path(expected_asset_name)

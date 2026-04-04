@@ -1,8 +1,8 @@
 import regex as re
 import torch
-import torchtext  # noqa: F401
+import torchtext2  # noqa: F401
 
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestGPT2BPETokenizer(TorchtextTestCase):
@@ -52,4 +52,4 @@ class TestGPT2BPETokenizer(TorchtextTestCase):
             "Lorem ipsum dolor sit\x0b\x0b amet.",
         ]
         for t in test_cases:
-            self.assertEqual(re.findall(gpt2_bpe_pattern, t), torch.ops.torchtext.gpt2_bpe_pre_tokenizer(t))
+            self.assertEqual(re.findall(gpt2_bpe_pattern, t), torch.ops.torchtext2.gpt2_bpe_pre_tokenizer(t))

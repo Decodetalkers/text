@@ -1,7 +1,7 @@
 import torch
-from torchtext.models import T5_BASE_GENERATION
-from torchtext.prototype.generate import GenerationUtils
-from torchtext_unittest.common.torchtext_test_case import TorchtextTestCase
+from torchtext2.models import T5_BASE_GENERATION
+from torchtext2.prototype.generate import GenerationUtils
+from torchtext2_unittest.common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestGenerationUtil(TorchtextTestCase):

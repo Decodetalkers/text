@@ -74,8 +74,8 @@ class clean(clean.clean):
         # Run default behavior first
         clean.clean.run(self)
 
-        # Remove torchtext extension
-        for path in (ROOT_DIR / "torchtext").glob("**/*.so"):
+        # Remove torchtext2 extension
+        for path in (ROOT_DIR / "torchtext2").glob("**/*.so"):
             print(f"removing '{path}'")
             path.unlink()
         # Remove build directory
@@ -89,7 +89,7 @@ class clean(clean.clean):
                 shutil.rmtree(str(path), ignore_errors=True)
 
 
-_init_submodule()
+#_init_submodule()
 setup_info = dict(
     # Metadata
     name="torchtext2",
@@ -103,7 +103,7 @@ setup_info = dict(
     packages=find_packages(exclude=("test*", "tools*")),
     zip_safe=False,
     # Extension info
-    # If you are trying to use torchtext.so and see no registered op.
+    # If you are trying to use torchtext2.so and see no registered op.
     # See here: https://github.com/pytorch/vision/issues/2134"
     ext_modules=setup_helpers.get_ext_modules(),
     cmdclass={

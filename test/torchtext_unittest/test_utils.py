@@ -5,11 +5,11 @@ import shutil
 import unittest
 from urllib.parse import urljoin
 
-from torchtext import _TEXT_BUCKET
-from torchtext import utils
-from torchtext_unittest.common.assets import conditional_remove, get_asset_path
+from torchtext2 import _TEXT_BUCKET
+from torchtext2 import utils
+from torchtext2_unittest.common.assets import conditional_remove, get_asset_path
 
-from .common.torchtext_test_case import TorchtextTestCase
+from .common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestUtils(TorchtextTestCase):

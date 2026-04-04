@@ -3,9 +3,9 @@ from argparse import ArgumentParser
 from functools import partial
 
 import torcharrow.pytorch as tap
-import torchtext.functional as F
+import torchtext2.functional as F
 from benchmark.utils import Timer
-from torchtext.datasets import DATASETS
+from torchtext2.datasets import DATASETS
 
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../examples"))
 from data_pipeline.roberta_dataframe import RobertaTransformDataFrameNativeOps, RobertaTransformDataFrameUDF

@@ -9,8 +9,8 @@ from collections import defaultdict
 from unittest.mock import patch
 
 from parameterized import parameterized
-from torchtext.data.datasets_utils import _generate_iwslt_files_for_lang_and_split
-from torchtext.datasets.iwslt2016 import (
+from torchtext2.data.datasets_utils import _generate_iwslt_files_for_lang_and_split
+from torchtext2.datasets.iwslt2016 import (
     DATASET_NAME,
     IWSLT2016,
     SUPPORTED_DATASETS,
@@ -18,7 +18,7 @@ from torchtext.datasets.iwslt2016 import (
 )
 
 from ..common.case_utils import zip_equal
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 SUPPORTED_LANGPAIRS = [(k, e) for k, v in SUPPORTED_DATASETS["language_pair"].items() for e in v]
 SUPPORTED_DEVTEST_SPLITS = SUPPORTED_DATASETS["valid_test"]

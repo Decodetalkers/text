@@ -2,10 +2,10 @@ import os
 import zipfile
 from unittest.mock import patch
 
-from torchtext.datasets.enwik9 import EnWik9
+from torchtext2.datasets.enwik9 import EnWik9
 
 from ..common.case_utils import TempDirMixin, zip_equal, get_random_unicode
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 def _get_mock_dataset(root_dir):

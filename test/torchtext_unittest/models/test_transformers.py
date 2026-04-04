@@ -1,7 +1,7 @@
 import torch
 
 from ..common.parameterized_utils import nested_params
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestTransformers(TorchtextTestCase):
@@ -11,7 +11,7 @@ class TestTransformers(TorchtextTestCase):
     )
     def test_padded_input_inference(self, with_no_grad, return_all_layers):
         """test transformerencoder inference same with and without padding"""
-        from torchtext.models import RobertaEncoderConf, RobertaModel
+        from torchtext2.models import RobertaEncoderConf, RobertaModel
 
         def encoder_inference(encoder, input_lst, with_no_grad):
             if with_no_grad:

@@ -5,10 +5,10 @@ from collections import defaultdict
 from unittest.mock import patch
 
 from parameterized import parameterized
-from torchtext.datasets import CNNDM
+from torchtext2.datasets import CNNDM
 
 from ..common.case_utils import TempDirMixin, zip_equal, get_random_unicode
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 def _get_mock_dataset(root_dir):
@@ -82,7 +82,7 @@ class TestCNNDM(TempDirMixin, TorchtextTestCase):
         return story_fnames
 
     @parameterized.expand(["train", "val", "test"])
-    @patch("torchtext.datasets.cnndm._get_split_list", _mock_split_list)
+    @patch("torchtext2.datasets.cnndm._get_split_list", _mock_split_list)
     def test_cnndm(self, split):
         dataset = CNNDM(root=self.root_dir, split=split)
         samples = list(dataset)
@@ -90,7 +90,7 @@ class TestCNNDM(TempDirMixin, TorchtextTestCase):
         self.assertEqual(expected_samples, samples)
 
     @parameterized.expand(["train", "val", "test"])
-    @patch("torchtext.datasets.cnndm._get_split_list", _mock_split_list)
+    @patch("torchtext2.datasets.cnndm._get_split_list", _mock_split_list)
     def test_cnndm_split_argument(self, split):
         dataset1 = CNNDM(root=self.root_dir, split=split)
         (dataset2,) = CNNDM(root=self.root_dir, split=(split,))

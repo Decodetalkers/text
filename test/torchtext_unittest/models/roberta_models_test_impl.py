@@ -9,7 +9,7 @@ from ..common.case_utils import TestBaseMixin
 
 class RobertaBaseTestModels(TestBaseMixin):
     def get_model(self, encoder_conf, head=None, freeze_encoder=False, checkpoint=None, override_checkpoint_head=False):
-        from torchtext.models import RobertaBundle
+        from torchtext2.models import RobertaBundle
 
         model = RobertaBundle.build_model(
             encoder_conf=encoder_conf,
@@ -22,7 +22,7 @@ class RobertaBaseTestModels(TestBaseMixin):
         return model
 
     def test_roberta_bundler_build_model(self) -> None:
-        from torchtext.models import RobertaClassificationHead, RobertaEncoderConf, RobertaModel
+        from torchtext2.models import RobertaClassificationHead, RobertaEncoderConf, RobertaModel
 
         dummy_encoder_conf = RobertaEncoderConf(
             vocab_size=10, embedding_dim=16, ffn_dimension=64, num_attention_heads=2, num_encoder_layers=2
@@ -66,7 +66,7 @@ class RobertaBaseTestModels(TestBaseMixin):
         self.assertEqual(model.state_dict(), dummy_classifier.state_dict())
 
     def test_roberta_bundler_train(self) -> None:
-        from torchtext.models import RobertaClassificationHead, RobertaEncoderConf, RobertaModel
+        from torchtext2.models import RobertaClassificationHead, RobertaEncoderConf, RobertaModel
 
         dummy_encoder_conf = RobertaEncoderConf(
             vocab_size=10, embedding_dim=16, ffn_dimension=64, num_attention_heads=2, num_encoder_layers=2
@@ -120,7 +120,7 @@ class RobertaBaseTestModels(TestBaseMixin):
 
     @patch("logging.Logger.warning")
     def test_roberta_bundler_get_model(self, mock):
-        from torchtext.models import RobertaEncoderConf, RobertaBundle
+        from torchtext2.models import RobertaEncoderConf, RobertaBundle
 
         dummy_encoder_conf = RobertaEncoderConf(
             vocab_size=10, embedding_dim=16, ffn_dimension=64, num_attention_heads=2, num_encoder_layers=2
@@ -132,7 +132,7 @@ class RobertaBaseTestModels(TestBaseMixin):
         )
 
     def test_roberta_bundler_raise_checkpoint(self) -> None:
-        from torchtext.models import RobertaClassificationHead, RobertaEncoderConf, RobertaBundle
+        from torchtext2.models import RobertaClassificationHead, RobertaEncoderConf, RobertaBundle
 
         with self.assertRaises(TypeError):
             dummy_encoder_conf = RobertaEncoderConf(
@@ -147,7 +147,7 @@ class RobertaBaseTestModels(TestBaseMixin):
             )
 
     def test_roberta_bundler_encode_conf_property(self) -> None:
-        from torchtext.models import RobertaEncoderConf, RobertaBundle
+        from torchtext2.models import RobertaEncoderConf, RobertaBundle
 
         dummy_encoder_conf = RobertaEncoderConf(
             vocab_size=10, embedding_dim=16, ffn_dimension=64, num_attention_heads=2, num_encoder_layers=2

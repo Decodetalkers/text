@@ -1,6 +1,6 @@
-from torchtext.data import get_tokenizer
+from torchtext2.data import get_tokenizer
 
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestUtils(TorchtextTestCase):

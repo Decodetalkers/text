@@ -2,12 +2,12 @@ import time
 
 import torch
 from torch.nn.functional import multi_head_attention_forward as mha_forward
-from torchtext.modules import InProjContainer, MultiheadAttentionContainer, ScaledDotProduct
+from torchtext2.modules import InProjContainer, MultiheadAttentionContainer, ScaledDotProduct
 
 
 def benchmark_mha_block():
     def _run_benchmark(embed_dim, nhead, bsz, device, tgt_len, src_len=None):
-        # Build torchtext MultiheadAttention module
+        # Build torchtext2 MultiheadAttention module
         in_proj_container = InProjContainer(
             torch.nn.Linear(embed_dim, embed_dim),
             torch.nn.Linear(embed_dim, embed_dim),
@@ -26,7 +26,7 @@ def benchmark_mha_block():
         attn_mask_2D = torch.randint(0, 2, (tgt_len, src_len)).to(torch.bool).to(device)
         attn_mask = torch.stack([attn_mask_2D] * (bsz * nhead))
         bias_k = bias_v = torch.rand((1, 1, embed_dim)).to(device)
-        print("starting torchtext.modules.MultiheadAttentionContainer")
+        print("starting torchtext2.modules.MultiheadAttentionContainer")
         if device == torch.device("cuda"):
             torch.cuda.synchronize()
         t0 = time.monotonic()

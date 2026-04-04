@@ -3,14 +3,14 @@ import shutil
 import tempfile
 
 import torch
-from torchtext.prototype.transforms import (
+from torchtext2.prototype.transforms import (
     sentencepiece_processor,
     sentencepiece_tokenizer,
     VectorTransform,
 )
-from torchtext.prototype.vectors import FastText
-from torchtext_unittest.common.assets import get_asset_path
-from torchtext_unittest.common.torchtext_test_case import TorchtextTestCase
+from torchtext2.prototype.vectors import FastText
+from torchtext2_unittest.common.assets import get_asset_path
+from torchtext2_unittest.common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestTransforms(TorchtextTestCase):

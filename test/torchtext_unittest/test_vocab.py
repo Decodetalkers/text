@@ -4,8 +4,8 @@ from collections import OrderedDict
 
 import pytest
 import torch
-from torchtext.vocab import build_vocab_from_iterator, vocab
-from torchtext_unittest.common.torchtext_test_case import TorchtextTestCase
+from torchtext2.vocab import build_vocab_from_iterator, vocab
+from torchtext2_unittest.common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestVocab(TorchtextTestCase):

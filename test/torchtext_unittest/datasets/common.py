@@ -5,9 +5,9 @@ from torch.utils.data.graph import traverse_dps
 from torch.utils.data.graph_settings import get_all_graph_pipes
 from torchdata.dataloader2.linter import _check_shuffle_before_sharding
 from torchdata.datapipes.iter import Shuffler, ShardingFilter
-from torchtext.datasets import DATASETS
+from torchtext2.datasets import DATASETS
 
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestDatasetPickling(TorchtextTestCase):

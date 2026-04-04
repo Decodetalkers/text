@@ -1,9 +1,9 @@
 import time
 
 import torch
-from torchtext.prototype.datasets import AG_NEWS
-from torchtext.prototype.vectors import FastText as FastTextExperimental
-from torchtext.vocab import FastText
+from torchtext2.prototype.datasets import AG_NEWS
+from torchtext2.prototype.vectors import FastText as FastTextExperimental
+from torchtext2.vocab import FastText
 
 
 def benchmark_experimental_vectors():

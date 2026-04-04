@@ -1,11 +1,12 @@
 [project]
-name = "text"
-version = "0.1.0"
+name = "torchtext2"
+version = "0.18.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
 	"nltk>=3.9.4",
+	"numpy>=2.4.3",
 	"requests>=2.32.5",
 	"setuptools>=82.0.1",
 	"spacy>=3.8.13",
@@ -22,6 +23,13 @@ classifiers = [
 ]
 
 [dependency-groups]
-dev = [
-    "ipython>=9.11.0",
-]
+dev = ["ipython>=9.11.0"]
+
+[tool.setuptools.packages.find]
+include = ["torchtext2*"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.uv.extra-build-dependencies]
+torchtext2 = ["numpy", "torch", "tools", "setuptools"]

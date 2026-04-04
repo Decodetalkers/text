@@ -1,6 +1,6 @@
 import torch
 
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 from .roberta_models_test_impl import RobertaBaseTestModels
 from .t5_models_test_impl import T5BaseTestModels
 

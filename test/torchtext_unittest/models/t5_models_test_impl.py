@@ -3,12 +3,12 @@ from unittest.mock import patch
 
 import torch
 from torch.nn import functional as F
-from torchtext_unittest.common.case_utils import TestBaseMixin
+from torchtext2_unittest.common.case_utils import TestBaseMixin
 
 
 class T5BaseTestModels(TestBaseMixin):
     def test_t5_bundler_build_model(self) -> None:
-        from torchtext.models import T5Conf, T5Model, T5Bundle
+        from torchtext2.models import T5Conf, T5Model, T5Bundle
 
         # case: user provides encoder checkpoint state dict
         dummy_encoder_conf = T5Conf(
@@ -57,7 +57,7 @@ class T5BaseTestModels(TestBaseMixin):
 
     @patch("logging.Logger.warning")
     def test_t5_bundler_get_model(self, mock):
-        from torchtext.models import T5Conf, T5Bundle
+        from torchtext2.models import T5Conf, T5Bundle
 
         # encoder-decoder with generation
         dummy_t5_generation_conf = T5Conf(
@@ -77,7 +77,7 @@ class T5BaseTestModels(TestBaseMixin):
         )
 
     def test_t5_bundler_raise_checkpoint(self) -> None:
-        from torchtext.models import T5Conf, T5Bundle
+        from torchtext2.models import T5Conf, T5Bundle
 
         # encoder-only
         with self.assertRaises(TypeError):
@@ -132,7 +132,7 @@ class T5BaseTestModels(TestBaseMixin):
             )
 
     def test_t5_bundler_conf_property(self) -> None:
-        from torchtext.models import T5Conf, T5Bundle
+        from torchtext2.models import T5Conf, T5Bundle
 
         dummy_t5_conf = T5Conf(
             encoder_only=False,
@@ -148,7 +148,7 @@ class T5BaseTestModels(TestBaseMixin):
 
     def test_t5_bundler_train(self) -> None:
         from torch.optim import SGD
-        from torchtext.models import T5Conf, T5Model, T5Bundle
+        from torchtext2.models import T5Conf, T5Model, T5Bundle
 
         torch.manual_seed(123)
 
@@ -186,7 +186,7 @@ class T5BaseTestModels(TestBaseMixin):
         self.assertNotEqual(model.state_dict(), current_state_dict)
 
     def test_shift_right(self) -> None:
-        from torchtext.models import T5Conf, T5Model
+        from torchtext2.models import T5Conf, T5Model
 
         dummy_encoder_conf = T5Conf()
         dummy_t5_encoder = T5Model(dummy_encoder_conf)

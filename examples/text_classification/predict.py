@@ -2,9 +2,9 @@ import argparse
 import sys
 
 import torch
-from torchtext.data.utils import get_tokenizer, ngrams_iterator
-from torchtext.prototype.transforms import load_sp_model, PRETRAINED_SP_MODEL, SentencePieceTokenizer
-from torchtext.utils import download_from_url
+from torchtext2.data.utils import get_tokenizer, ngrams_iterator
+from torchtext2.prototype.transforms import load_sp_model, PRETRAINED_SP_MODEL, SentencePieceTokenizer
+from torchtext2.utils import download_from_url
 
 
 def predict(text, model, dictionary, tokenizer, ngrams):

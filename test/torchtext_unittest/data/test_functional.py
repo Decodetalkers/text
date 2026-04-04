@@ -5,7 +5,7 @@ import unittest
 import uuid
 
 import torch
-from torchtext.data.functional import (
+from torchtext2.data.functional import (
     custom_replace,
     generate_sp_model,
     load_sp_model,
@@ -15,7 +15,7 @@ from torchtext.data.functional import (
 )
 
 from ..common.assets import get_asset_path
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestFunctional(TorchtextTestCase):

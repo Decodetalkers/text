@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# torchtext documentation build configuration file, created by
+# torchtext2 documentation build configuration file, created by
 # sphinx-quickstart on Thu Nov 16 01:05:05 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -106,7 +106,7 @@ sphinx_gallery_conf = {
     **_get_pattern(),
     "backreferences_dir": "gen_modules/backreferences",
     "first_notebook_cell": None,
-    "doc_module": ("torchtext",),
+    "doc_module": ("torchtext2",),
 }
 
 
@@ -140,9 +140,9 @@ author = "Torchtext Contributors"
 if os.getenv("BUILD_VERSION"):
     version = release = os.environ["BUILD_VERSION"]
 else:
-    import torchtext
+    import torchtext2
 
-    version = f"Nightly Build ({torchtext.__version__})"
+    version = f"Nightly Build ({torchtext2.__version__})"
     release = "nightly"
 
 # List of patterns, relative to source directory, that match files and
@@ -219,7 +219,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "pytorch.tex", "torchtext Documentation", "Torch Contributors", "manual"),
+    (master_doc, "pytorch.tex", "torchtext2 Documentation", "Torch Contributors", "manual"),
 ]
 
 
@@ -227,7 +227,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "torchtext", "torchtext Documentation", [author], 1)]
+man_pages = [(master_doc, "torchtext2", "torchtext2 Documentation", [author], 1)]
 
 
 # -- Options for Texinfo output -------------------------------------------
@@ -238,10 +238,10 @@ man_pages = [(master_doc, "torchtext", "torchtext Documentation", [author], 1)]
 texinfo_documents = [
     (
         master_doc,
-        "torchtext",
-        "torchtext Documentation",
+        "torchtext2",
+        "torchtext2 Documentation",
         author,
-        "torchtext",
+        "torchtext2",
         "One line description of project.",
         "Miscellaneous",
     ),

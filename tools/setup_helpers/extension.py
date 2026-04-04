@@ -15,8 +15,8 @@ __all__ = [
 ]
 
 
-_LIBTORCHTEXT_NAME = "torchtext.lib.libtorchtext"
-_EXT_NAME = "torchtext._torchtext"
+_LIBTORCHTEXT_NAME = "torchtext2.lib.libtorchtext2"
+_EXT_NAME = "torchtext2._torchtext2"
 _THIS_DIR = Path(__file__).parent.resolve()
 _ROOT_DIR = _THIS_DIR.parent.parent.resolve()
 
@@ -52,7 +52,7 @@ class CMakeBuild(build_ext):
         # However, the following `cmake` command will build all of them at the same time,
         # so, we do not need to perform `cmake` twice.
         # Therefore we call `cmake` only for `torchaudio._torchaudio`.
-        if ext.name != "torchtext._torchtext":
+        if ext.name != "torchtext2._torchtext2":
             return
 
         extdir = os.path.abspath(os.path.dirname(self.get_ext_fullpath(ext.name)))

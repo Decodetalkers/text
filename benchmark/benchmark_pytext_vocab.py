@@ -4,7 +4,7 @@ import time
 from collections import Counter, OrderedDict
 from typing import List, Union
 
-# this is needed because we want to add 'torchtext/examples/data_pipeline' directory to the
+# this is needed because we want to add 'torchtext2/examples/data_pipeline' directory to the
 # `sys.path` variable in order to import the pytext_vocab (since its not a module)
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "examples", "vocab"))
 
@@ -12,7 +12,7 @@ import torch
 from pytext.data.utils import Vocabulary as PytextVocabulary
 from pytext.torchscript.vocab import ScriptVocabulary as PytextScriptVocabulary
 from pytext_vocab import ScriptVocab as ExperimentalScriptVocabulary
-from torchtext.prototype.datasets import AG_NEWS
+from torchtext2.prototype.datasets import AG_NEWS
 
 
 def _run_benchmark_lookup(tokens, vocab, num_iters=1):

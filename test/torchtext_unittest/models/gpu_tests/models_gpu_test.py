@@ -2,9 +2,9 @@ import unittest
 
 import pytest
 import torch
-from torchtext_unittest.common.torchtext_test_case import TorchtextTestCase
-from torchtext_unittest.models.roberta_models_test_impl import RobertaBaseTestModels
-from torchtext_unittest.models.t5_models_test_impl import T5BaseTestModels
+from torchtext2_unittest.common.torchtext2_test_case import TorchtextTestCase
+from torchtext2_unittest.models.roberta_models_test_impl import RobertaBaseTestModels
+from torchtext2_unittest.models.t5_models_test_impl import T5BaseTestModels
 
 
 @pytest.mark.gpu_test

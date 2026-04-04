@@ -6,14 +6,14 @@ import torch
 import torch.nn as nn
 import torcharrow._torcharrow as _ta
 import torcharrow.pytorch as tap
-import torchtext.functional as F
-import torchtext.transforms as T
+import torchtext2.functional as F
+import torchtext2.transforms as T
 from torch.optim import AdamW
 from torch.utils.data import DataLoader
 from torcharrow import functional as ta_F
-from torchtext.datasets import SST2
-from torchtext.models import RobertaClassificationHead, ROBERTA_BASE_ENCODER
-from torchtext.utils import get_asset_local_path
+from torchtext2.datasets import SST2
+from torchtext2.models import RobertaClassificationHead, ROBERTA_BASE_ENCODER
+from torchtext2.utils import get_asset_local_path
 
 DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 

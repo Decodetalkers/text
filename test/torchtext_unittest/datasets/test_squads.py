@@ -5,13 +5,13 @@ from collections import defaultdict
 from random import randint
 from unittest.mock import patch
 
-from torchtext.data.datasets_utils import _ParseSQuADQAData
-from torchtext.datasets.squad1 import SQuAD1
-from torchtext.datasets.squad2 import SQuAD2
+from torchtext2.data.datasets_utils import _ParseSQuADQAData
+from torchtext2.datasets.squad1 import SQuAD1
+from torchtext2.datasets.squad2 import SQuAD2
 
 from ..common.case_utils import TempDirMixin, zip_equal, get_random_unicode
 from ..common.parameterized_utils import nested_params
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 def _get_mock_json_data():

@@ -1,10 +1,10 @@
 import os
 
 import torch
-import torchtext.data as data
-from torchtext.prototype.transforms import basic_english_normalize
+import torchtext2.data as data
+from torchtext2.prototype.transforms import basic_english_normalize
 
-from ..common.torchtext_test_case import TorchtextTestCase
+from ..common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestFunctional(TorchtextTestCase):

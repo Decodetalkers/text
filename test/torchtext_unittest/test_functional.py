@@ -1,8 +1,8 @@
 import torch
-from torchtext import functional
+from torchtext2 import functional
 
 from .common.parameterized_utils import nested_params
-from .common.torchtext_test_case import TorchtextTestCase
+from .common.torchtext2_test_case import TorchtextTestCase
 
 
 class TestFunctional(TorchtextTestCase):

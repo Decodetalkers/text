@@ -2,8 +2,8 @@ from argparse import ArgumentParser
 
 from benchmark.utils import Timer
 from tokenizers import Tokenizer as hf_tokenizer_lib
-from torchtext.datasets import EnWik9
-from torchtext.transforms import BERTTokenizer as tt_bert_tokenizer
+from torchtext2.datasets import EnWik9
+from torchtext2.transforms import BERTTokenizer as tt_bert_tokenizer
 from transformers import BertTokenizer as hf_bert_tokenizer_slow
 
 

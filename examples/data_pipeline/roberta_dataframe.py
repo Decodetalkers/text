@@ -6,13 +6,13 @@ import torcharrow as ta
 import torcharrow._torcharrow as _ta
 import torcharrow.dtypes as dt
 import torcharrow.pytorch as tap
-import torchtext.transforms as T
+import torchtext2.transforms as T
 from torch.hub import load_state_dict_from_url
 from torch.nn import Module
 from torch.utils.data import DataLoader
 from torcharrow import functional as ta_F
-from torchtext.datasets import SST2
-from torchtext.utils import get_asset_local_path
+from torchtext2.datasets import SST2
+from torchtext2.utils import get_asset_local_path
 
 
 def init_ta_gpt2bpe_encoder():
