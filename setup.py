@@ -45,18 +45,6 @@ def _export_version(version, sha):
         fileobj.write("git_version = {}\n".format(repr(sha)))
 
 
-def _init_submodule():
-    print(" --- Initializing submodules")
-    try:
-        subprocess.check_call(["git", "submodule", "init"])
-        subprocess.check_call(["git", "submodule", "update", "--recursive", "--remote"])
-    except Exception:
-        print(" --- Submodule initialization failed")
-        print("Please run:\n\tgit submodule update --init --recursive")
-        sys.exit(1)
-    print(" --- Initialized submodule")
-
-
 VERSION, SHA = _get_version()
 _export_version(VERSION, SHA)
 
@@ -93,7 +81,6 @@ class clean(clean.clean):
 setup_info = dict(
     # Metadata
     name="torchtext2",
-    version=VERSION,
     author="PyTorch Text Team",
     author_email="packages@pytorch.org",
     url="https://github.com/Decodetalkers/text",
