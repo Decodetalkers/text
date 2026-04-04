@@ -39,7 +39,7 @@ def _get_version():
 
 
 def _export_version(version, sha):
-    version_path = ROOT_DIR / "torchtext" / "version.py"
+    version_path = ROOT_DIR / "torchtext2" / "version.py"
     with open(version_path, "w") as fileobj:
         fileobj.write("__version__ = '{}'\n".format(version))
         fileobj.write("git_version = {}\n".format(repr(sha)))
@@ -92,13 +92,13 @@ class clean(clean.clean):
 _init_submodule()
 setup_info = dict(
     # Metadata
-    name="torchtext",
+    name="torchtext2",
     version=VERSION,
     author="PyTorch Text Team",
     author_email="packages@pytorch.org",
-    url="https://github.com/pytorch/text",
+    url="https://github.com/Decodetalkers/text",
     description="Text utilities, models, transforms, and datasets for PyTorch.",
-    long_description=read("README.rst"),
+    long_description=read("README.md"),
     # Package info
     packages=find_packages(exclude=("test*", "tools*")),
     zip_safe=False,
