@@ -74,6 +74,7 @@ class CMakeBuild(build_ext):
             "-DSPM_ENABLE_TCMALLOC=OFF",
             "-DRE2_BUILD_TESTING:BOOL=OFF",
             "-DBUILD_TESTING:BOOL=OFF",
+            "-DSPM_ABSL_PROVIDER=package",
             "-DBUILD_SHARED_LIBS=OFF",
             "-DCMAKE_POLICY_DEFAULT_CMP0063=NEW",
             "-DSPM_ENABLE_SHARED=OFF",
