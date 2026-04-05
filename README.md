@@ -1,3 +1,32 @@
+# This is a fork for text, just to make the use it in some training projects
+
+## build and publish
+
+### build the docker image
+
+```bash
+docker buildx build -t nobody/my_uv_image:1.0 .
+docker run --rm -it -v /the/folder/of/current/directory:/text docker.io/nobody/my_uv_image:1.0
+```
+
+### build the package
+
+```bash
+
+cd /text
+uv build
+auditwheel repair dist/*.whl \
+  --exclude libtorch.so \
+  --exclude libc10.so \
+  --exclude libtorch_cpu.so \
+  -- .... # other needed to be exclude
+rm -rf dist
+move the_audited_dist dist
+uv publish
+
+```
+
+## Original information
 .. image:: docs/source/_static/img/torchtext_logo.png
 
 .. image:: https://circleci.com/gh/pytorch/text.svg?style=svg
